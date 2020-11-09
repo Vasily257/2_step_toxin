@@ -47,8 +47,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      title: 'Toxin',
-      template: './index.html',
+      template: './index.pug',
       minify: {
         collapseWhitespace: isProd
       }
@@ -68,6 +67,13 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader',
+        options: {
+          pretty: true
+        }
+      },
       {
         test: /\.s[ac]ss$/,
         use: [{
